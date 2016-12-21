@@ -1,20 +1,20 @@
 Introduction
 ------------
 
-xanaxbetter is a script which automatically transcodes and uploads these
+apollobetter is a script which automatically transcodes and uploads these
 files to Apollo.Rip.
 
 The following command will scan through every FLAC you have ever
 downloaded (if it is in , determine which formats are needed, transcode the FLAC to
 each needed format, and upload each format to Apollo.Rip -- automatically.
 
-    $ xanaxbetter
+    $ apollobetter
 
 Installation
 ------------
 
 You're going to need to install a few dependencies before using
-xanaxbetter.
+apollobetter.
 
 First and foremost, you will need Python 2.7 or newer.
 
@@ -37,7 +37,7 @@ as:
     $ cd ~/
     $ ~/.local/bin/virtualenv apollo-venv
 
-Then anytime you need to use xanaxbetter, you just need to run this first:
+Then anytime you need to use apollobetter, you just need to run this first:
 
     $ source ~/apollo-venv/bin/activate
 
@@ -77,7 +77,7 @@ you could contact your provider to have these packages installed.
 
 At this point you may execute the following command:
 
-    $ xanaxbetter
+    $ apollobetter
 
 And you will receive a notification stating that you should edit the
 configuration file `~/.apollobetter/config` (if you're lucky).
@@ -89,7 +89,7 @@ You've made it far! Congratulations. Open up the file
 `~/.apollobetter/config` in a text editor. You're going to see something
 like this:
 
-    [xanax]
+    [apollo]
     username =
     password = 
     data_dir =
@@ -120,7 +120,7 @@ a prompt will appear. The default is '0' which ignores these occurrences.
 
 You should end up with something like this:
 
-    [xanax]
+    [apollo]
     username = RequestBunny
     password = clapton
     data_dir = /srv/downloads
@@ -130,12 +130,12 @@ You should end up with something like this:
     media = cd, vinyl, web
     24bit_behaviour = 0
 
-Alright! Now you're ready to use xanaxbetter.
+Alright! Now you're ready to use apollobetter.
 
 Usage
 -----
 
-    usage: xanaxbetter [-h] [-s] [-j THREADS] [--config CONFIG] [--cache CACHE]
+    usage: apollobetter [-h] [-s] [-j THREADS] [--config CONFIG] [--cache CACHE]
                        [-U] [-E] [--version]
                        [release_urls [release_urls ...]]
     
@@ -149,9 +149,9 @@ Usage
       -j THREADS, --threads THREADS
                             number of threads to use when transcoding (default: 3)
       --config CONFIG       the location of the configuration file (default:
-                            /Users/mpeveler/.xanaxbetter/config)
+                            /Users/mpeveler/.apollobetter/config)
       --cache CACHE         the location of the cache (default:
-                            /Users/mpeveler/.xanaxbetter/cache)
+                            /Users/mpeveler/.apollobetter/cache)
       -U, --no-upload       don't upload new torrents (in case you want to do it
                             manually) (default: False)
       -E, --no-24bit-edit   don't try to edit 24-bit torrents mistakenly labeled
@@ -164,18 +164,18 @@ Examples
 To transcode and upload every snatch you've ever downloaded (this may
 take a while):
 
-    $ xanaxbetter
+    $ apollobetter
 
 To transcode and upload a specific release (provided you have already
 downloaded the FLAC and it is located in your `data_dir`):
 
-    $ xanaxbetter "http://apollo.rip/torrents.php?id=1000&torrentid=1000000"
+    $ apollobetter "http://apollo.rip/torrents.php?id=1000&torrentid=1000000"
 
-Note that if you specify a particular release(s), xanaxbetter will
+Note that if you specify a particular release(s), apollobetter will
 ignore your configuration's media types and attempt to transcode the
 releases you have specified regardless of their media type (so long as
 they are lossless types).
 
-Your first time running xanaxbetter might take a while, but after it has
+Your first time running apollobetter might take a while, but after it has
 successfully gone through and checked everything, it'll go faster any
 consecutive runs due to it's caching method.
